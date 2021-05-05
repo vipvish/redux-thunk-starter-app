@@ -4,9 +4,11 @@ import axios from "axios";
 
 //get all post
 export const getPosts = () => async (dispatch) => {
-   
-  const result = await axios.get("https://jsonplaceholder.typicode.com/posts");
 
+  const url = (localStorage.getItem('mode') === 'offline') ? "http://localhost/api/api/getPosts" : "https://jsonplaceholder.typicode.com/posts";
+
+  const result = await axios.get(url);
+  
   dispatch({
     type : action.GET_POSTS,
     payload : result.data
@@ -23,7 +25,9 @@ export const selectPost = (id) => ({
 // create a post
 export const createPost = (post) => async (dispatch) => {
 
-  const result = await axios.post("https://jsonplaceholder.typicode.com/posts",post);
+  const url = (localStorage.getItem('mode') === 'offline') ? "http://localhost/api/api/postAction" : "https://jsonplaceholder.typicode.com/posts";
+
+  const result = await axios.post(url,post,{headers:{"Content-Type" : "application/x-www-form-urlencoded"}});
 
   dispatch({
     type: action.CREATE_POST,
@@ -34,7 +38,9 @@ export const createPost = (post) => async (dispatch) => {
 // update a post
 export const updatePost = (post) => async (dispatch) => {
 
-  const result = await axios.put(`https://jsonplaceholder.typicode.com/posts/${post.id}`,post);
+  const url = (localStorage.getItem('mode') === 'offline') ? `http://localhost/api/api/postAction/${post.id}` : `https://jsonplaceholder.typicode.com/posts/${post.id}`;
+
+  const result = await axios.post(url,post,{headers:{"Content-Type" : "application/x-www-form-urlencoded"}});
 
   dispatch({
     type: action.UPDATE_POST,
@@ -46,7 +52,9 @@ export const updatePost = (post) => async (dispatch) => {
 // delete a post
 export const deletePost = (id) => async (dispatch) => {
 
-  await axios.delete(`https://jsonplaceholder.typicode.com/posts/${id}`);
+  const url = (localStorage.getItem('mode') === 'offline') ? `http://localhost/api/api/postAction/${id}/delete` : `https://jsonplaceholder.typicode.com/posts/${id}`;
+
+  await axios.delete(url,'',{headers:{"Content-Type" : "application/x-www-form-urlencoded"}});
 
   dispatch({
     type: action.DELETE_POST,
