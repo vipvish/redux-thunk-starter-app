@@ -12,7 +12,7 @@ const Navbar = () => {
     <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
       <div className="container">
         <Link className="navbar-brand" to="/">
-          Redux Posts Method
+          Redux Posts Methods
         </Link>
 
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
