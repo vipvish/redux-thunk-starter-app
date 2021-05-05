@@ -1,13 +1,13 @@
 import React from "react";
 import "./styles/App.scss";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./components/pages/Home";
 import Navbar from "./components/elements/Navbar";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import AddPost from "./components/Posts/AddPost";
 import Post from "./components/Posts/Post";
 import UpdatePost from "./components/Posts/UpdatePost";
 import { Provider } from "react-redux";
-import store from "./store";
+import store from "./redux/store";
 
 function App() {
   return (

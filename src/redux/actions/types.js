@@ -1,0 +1,7 @@
+export const PostActionType = {
+    GET_POSTS   : "GET_POSTS",
+    SELECT_POST : "SELECT_POST",
+    CREATE_POST : "CREATE_POST",
+    UPDATE_POST : "UPDATE_POST",
+    DELETE_POST : "DELETE_POST",
+}

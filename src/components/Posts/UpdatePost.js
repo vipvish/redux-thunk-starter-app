@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getPost, updatePost } from "../../actions/postAction";
+import { selectPost , updatePost } from "../../redux/actions/postAction";
 import { useParams, useHistory } from "react-router-dom";
 
 const UpdatePost = () => {
@@ -14,15 +14,18 @@ const UpdatePost = () => {
   useEffect(() => {
     loadPost();
   }, []);
+
   useEffect(() => {
     if (post) {
       setTitle(post.title);
       setBody(post.body);
     }
   }, [post]);
+  
   const loadPost = () => {
-    dispatch(getPost(id));
+    dispatch(selectPost(id));
   };
+
   const submitForm = (e) => {
     e.preventDefault();
     const update_post = {
@@ -34,6 +37,7 @@ const UpdatePost = () => {
     dispatch(updatePost(update_post));
     history.push("/");
   };
+
   return (
     <div className="container">
       <div className="py-4">

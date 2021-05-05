@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import shortid from "shortid";
-import { createPost } from "../../actions/postAction";
+import { createPost } from "../../redux/actions/postAction";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 
 const AddPost = () => {
+
   let history = useHistory();
   const dispatch = useDispatch();
   const [title, setTitle] = useState("");
@@ -13,7 +13,6 @@ const AddPost = () => {
   const submitForm = (e) => {
     e.preventDefault();
     const new_post = {
-      id: shortid.generate(),
       title: title,
       body: body,
     };
@@ -21,6 +20,7 @@ const AddPost = () => {
     dispatch(createPost(new_post));
     history.push("/");
   };
+  
   return (
     <div className="container">
       <div className="py-4">

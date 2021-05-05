@@ -1,18 +1,20 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getPost } from "../../actions/postAction";
+import { selectPost } from "../../redux/actions/postAction";
 import { useParams } from "react-router-dom";
 
 const Post = () => {
+  
   const dispatch = useDispatch();
   const post = useSelector((state) => state.post.post);
   const { id } = useParams();
+
   useEffect(() => {
     loadPost();
   }, []);
 
   const loadPost = () => {
-    dispatch(getPost(id));
+    dispatch(selectPost(id));
   };
 
   if (!post) {
