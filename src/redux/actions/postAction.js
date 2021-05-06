@@ -3,9 +3,11 @@ import { PostActionType as action } from "./types";
 import axios from "axios";
 
 //get all post
-export const getPosts = () => async (dispatch) => {
+export const getPosts = (id) => async (dispatch) => {
 
-  const url = (localStorage.getItem('mode') === 'offline') ? "http://localhost/api/api/getPosts" : "https://jsonplaceholder.typicode.com/posts";
+  console.log(id);
+
+  const url = (localStorage.getItem('mode') === 'offline') ? `http://localhost/api/api/getPosts/${id}` : `https://jsonplaceholder.typicode.com/posts?_page=${id}`;
 
   const result = await axios.get(url);
   

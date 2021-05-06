@@ -20,16 +20,16 @@ const PostCard = ({ postItem }) => {
           to={`/updatePost/${postItem.id}`}
           className="btn btn-danger btn-edit"
         >
-          <span className="material-icons">edit</span>
+        <span className="material-icons">edit</span>
         </Link>
         <button
           className="btn btn-danger btn-delete"
           onClick={() => dispatch(deletePost(postItem.id))}
         >
-          <span className="material-icons">delete_outline</span>
+        <span className="material-icons">delete_outline</span>
         </button>
         <div className="card-body">
-          <h6 className="text-secondary">{postItem.title}</h6>
+          <h6 className="text-secondary">{postItem.id}). {postItem.title}</h6>
           <EllipsisText text={postItem.body} length={100} />
         </div>
         <div className="card-footer">
